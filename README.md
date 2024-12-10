@@ -15,3 +15,5 @@
 **Hoca İsimleri Ve Scopus Matching.py:** Hoca isimlerini ve Scopus daki isimleri matching yapar
 
 **Akademik.yok.gov.tr den Hoca İsimleri Scrapping.py:** Yök internet sitesinden Üniversitelerdeki hoca isimleri, title ve department bilgilerini çeker.
+
+**Scopus_ing_karkaterr.py**= Scopustan çekilen verilerdeki tüm satırı ve sutünü ing karakter ile yazar 

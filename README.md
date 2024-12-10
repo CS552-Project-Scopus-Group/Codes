@@ -18,4 +18,4 @@
 
 **Scopus_ing_karkaterr.py**= Scopustan çekilen verilerdeki tüm satırı ve sutünü ing karakter ile yazar 
 
-**Matching_csvler.py**= Scopus ve yok atlasları match sadece isim ve soy isim match eden kod.
+**Matching_csvler.py**= Scopus ve yok atlasları(ENG KARAKTER) match sadece isim ve soy isim match eden kod.

@@ -23,3 +23,5 @@
 **gender_guess.py**= Cinsiyet tahmini yapıyor.
 
 **merged_cities and merged_ankara,kayseri.py**= excel isimleri farklı olduğu için 7 şehir 2 parçaya bölünüp öyle merged edildi, SONRA 2 EXCELİ MERGED EDİNCE TÜM ÜNİLER MERGED OLUR.
+
+**final_merged_all_univerisities.py** = 7 şehirdeki tüm ünilerin bilgileri tek bir excelde toplandı.

@@ -21,3 +21,5 @@
 **Matching_csvler.py**= Scopus ve yok atlasları(ENG KARAKTER) match sadece isim ve soy isim match eden kod.
 
 **gender_guess.py**= Cinsiyet tahmini yapıyor.
+
+**merged_cities and merged_ankara,kayseri.py**= excel isimleri farklı olduğu için 7 şehir 2 parçaya bölünüp öyle merged edildi, SONRA 2 EXCELİ MERGED EDİNCE TÜM ÜNİLER MERGED OLUR.

@@ -4,11 +4,11 @@ import gender_guesser.detector as gender
 # İsim tespit edici oluştur
 d = gender.Detector()
 
-# CSV dosyasını oku
-file_path = r"C:\Users\emre.ozturk\Desktop\SCRAP\final_matched_all.csv"
-output_file = r"C:\Users\emre.ozturk\Desktop\SCRAP\names_with_gender.csv"
+# Excel dosyasını oku
+file_path = r"C:\Users\emre.ozturk\Desktop\SCRAP\final_matched_all.xlsx"
+output_file = r"C:\Users\emre.ozturk\Desktop\SCRAP\fina_match_with_genders.xlsx"
 
-df = pd.read_csv(file_path)
+df = pd.read_excel(file_path)
 
 # İsim sütunundan tahmin et
 def predict_gender(name):
@@ -24,10 +24,15 @@ def predict_gender(name):
     else:
         return "Unknown"
 
-# 'Author full names' sütunundan cinsiyet tahmini yap
-df['Gender'] = df['Name and Surname'].apply(predict_gender)
+# 'Name and Surname' sütunundan cinsiyet tahmini yap
+df['Gender'] = df['Matched Author Name'].apply(predict_gender)
 
-# Yeni CSV'ye kaydet
-df.to_csv(output_file, index=False)
+# Ek sütunlar oluştur
+df['Male'] = (df['Gender'] == 'Male').astype(int)  # Erkekler için 1, diğerleri için 0
+df['Female'] = (df['Gender'] == 'Female').astype(int)  # Kadınlar için 1, diğerleri için 0
+df['Unknown'] = (df['Gender'] == 'Unknown').astype(int)  # Bilinmeyenler için 1, diğerleri için 0
+
+# Yeni Excel dosyasına kaydet
+df.to_excel(output_file, index=False)
 
 print(f"Cinsiyet tahmini tamamlandı. Sonuçlar {output_file} dosyasına kaydedildi.")

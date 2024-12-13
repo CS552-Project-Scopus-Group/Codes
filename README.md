@@ -18,6 +18,10 @@
 
 **Akademik.yok.gov.tr den Hoca İsimleri Scrapping.py:** Yök internet sitesinden Üniversitelerdeki hoca isimleri, title ve department bilgilerini çeker.
 
+## Data Analysis Related Codes:
+
+
+
 
 ## Other Codes:
 

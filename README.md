@@ -4,8 +4,6 @@
 
 **Scopus Scrapping.py:** Scopus sayfasından Xpath leri girip her sayfayı tek tek çeker.
 
-**Scopus Scrapping.py:** Scopus sayfasından Xpath leri girip her sayfayı tek tek çeker.
-
 **Scopus CSV İsim Soy İsim Sütun Düzenleme.py:** Scopus Dataseti İsim Soy isim sıralamasını ve sütunları düzenler parantez içindeki ID leri kaldırır.
 
 **Hoca İsimleri Ve Scopus Matching.py:** Hoca isimlerini ve Scopus daki isimleri matching yapar

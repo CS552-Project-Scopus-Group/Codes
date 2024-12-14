@@ -20,7 +20,7 @@
 
 ## Data Analysis Related Codes:
 
-
+**gender_title_count.py** = cinsiyet ünvan dağılımını ve hangi title kaç adet makale yazmış onunu grafiğini bastıran kod.
 
 
 ## Other Codes:

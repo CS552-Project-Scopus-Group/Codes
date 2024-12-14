@@ -24,6 +24,9 @@
 
 **Department_counts.py**= hangi bölümden kaç tane olduğunu bilgisini verir, çok fazla bölüm olduğu için partlara bölünüp yapıldı. YİNE AYNI KOD SADECE SUTÜNÜ "Faculty" oalrak değişip hangi fakülteden kaç adet varsa bilgisi ve grafiğini veren kod.
 
+**university_gender_info.py**  = hangi ünide kaç tane kadın-erkek var grafik kodu.
+
+
 
 ## Other Codes:
 

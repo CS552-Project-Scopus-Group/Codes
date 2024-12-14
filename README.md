@@ -22,6 +22,8 @@
 
 **gender_title_count.py** = cinsiyet ünvan dağılımını ve hangi title kaç adet makale yazmış onunu grafiğini bastıran kod.
 
+**Department_counts.py**= hangi bölümden kaç tane olduğunu bilgisini verir, çok fazla bölüm olduğu için partlara bölünüp yapıldı.
+
 
 ## Other Codes:
 

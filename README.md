@@ -26,6 +26,8 @@
 
 **university_gender_info.py**  = hangi ünide kaç tane kadın-erkek var grafik kodu.
 
+**type_gender_by_cities.py** = Burada ise işte hangi şehirde kaç tane kadın-erkek, devlet mi özel mi daha çok syılarını veriyor.
+
 
 
 ## Other Codes:

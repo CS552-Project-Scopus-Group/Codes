@@ -30,7 +30,7 @@
 
 **unvana_gore_city.py** = burada ise hangi şehirde hangi ünvana sahip kaç tane var.
 
-**Faculty_of_universities_number_of_titles.py** = hangi ünide hangi fakülte kaç tane article yazmış.
+**Faculty_of_universities_number_of_titles.py** = hani ünide hangi fakültede article sayısı.
 
 
 

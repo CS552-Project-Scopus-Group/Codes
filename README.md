@@ -28,6 +28,8 @@
 
 **type_gender_by_cities.py** = Burada ise işte hangi şehirde kaç tane kadın-erkek, devlet mi özel mi daha çok syılarını veriyor.
 
+**unvana_gore_city.py** = burada ise hangi şehirde hangi ünvana sahip kaç tane var.
+
 
 
 ## Other Codes:

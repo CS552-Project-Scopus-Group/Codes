@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import os
 
 # Dosya yolunu belirtin
-file_path = r"C:\\Users\\emre.ozturk\\Desktop\\SCRAP\\Gender\\final_match_with_genders_copy.xlsx"
+file_path = r"C:\Users\alibaki.turkoz\Desktop\CS552_Project_Ali_Baki_TÜRKÖZ_Github\Matched_Informations\final_match_with_type_cities - Kopya.xlsx"
 
 # Çıktı klasörünü tanımlayın
-output_folder = r"C:\\Users\\emre.ozturk\\Desktop\\SCRAP\\Gender"
+output_folder = r"C:\Users\alibaki.turkoz\Desktop\CS552_Project_Ali_Baki_TÜRKÖZ_Github\Data Analysis"
 os.makedirs(output_folder, exist_ok=True)
 
 # Veriyi oku

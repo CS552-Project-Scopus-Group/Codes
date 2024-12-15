@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Excel dosyasını oku
-file_path = r'C:\Users\emre.ozturk\Desktop\SCRAP\Gender\final_match_with_type_cities.xlsx'
+file_path = r'C:\Users\alibaki.turkoz\Desktop\CS552_Project_Ali_Baki_TÜRKÖZ_Github\Matched_Informations\final_match_with_type_cities - Kopya.xlsx'
 data = pd.read_excel(file_path)
 
 # 'Type' sütunundaki 'Private ' değerlerini 'Private' olarak düzelt
@@ -19,7 +19,7 @@ gender_city_counts = data.groupby(['City', 'Gender']).size().unstack(fill_value=
 gender_type_counts = data.groupby(['Type', 'Gender']).size().unstack(fill_value=0)
 
 # Çıktıyı bir dosyaya kaydet
-output_folder = r'C:\Users\emre.ozturk\Desktop\SCRAP\Gender'
+output_folder = r'C:\Users\alibaki.turkoz\Desktop\CS552_Project_Ali_Baki_TÜRKÖZ_Github\Data Analysis'
 os.makedirs(output_folder, exist_ok=True)
 
 # Çıktıyı Excel dosyasına kaydet

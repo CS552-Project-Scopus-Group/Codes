@@ -3,8 +3,8 @@ import pandas as pd
 from unidecode import unidecode
 
 # Base directory and output path
-data_directory = r"C:\Users\emre.ozturk\Desktop\SCRAP\All_universities"
-output_file = r"C:\Users\emre.ozturk\Desktop\SCRAP\merged_data_baki.xlsx"
+data_directory = r"C:\Users\alibaki.turkoz\Desktop\CS552_Project_Ali_Baki_TÜRKÖZ_Github\All_universities"
+output_file = r"C:\Users\alibaki.turkoz\Desktop\CS552_Project_Ali_Baki_TÜRKÖZ_Github\merged_data_alibaki.xlsx"
 
 def convert_to_english(text):
     return unidecode(text)

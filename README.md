@@ -22,17 +22,22 @@
 
 **gender_title_count.py** = cinsiyet ünvan dağılımını ve hangi title kaç adet makale yazmış onunu grafiğini bastıran kod.
 
+**Year_Article_Count** = Yıl Makale dağılımı
+
 **Department_counts.py**= hangi bölümden kaç tane olduğunu bilgisini verir, çok fazla bölüm olduğu için partlara bölünüp yapıldı. YİNE AYNI KOD SADECE SUTÜNÜ "Faculty" oalrak değişip hangi fakülteden kaç adet varsa bilgisi ve grafiğini veren kod.
+**Year_City_Number_of_Articles** = yıllara göre şehirlerin makale sayısı 
 
 **university_gender_info.py**  = hangi ünide kaç tane kadın-erkek var grafik kodu.
 
 **type_gender_by_cities.py** = Burada ise işte hangi şehirde kaç tane kadın-erkek, devlet mi özel mi daha çok syılarını veriyor.
 
+**Year_Based_Number_of_Article_of_Departments_and_Faculties** = Departman ve fakültelerin yıllara göre article sayısı
+
 **unvana_gore_city.py** = burada ise hangi şehirde hangi ünvana sahip kaç tane var.
 
 **Faculty_of_universities_number_of_titles.py** = hani ünide hangi fakültede article sayısı.
 
-
+**Number_of_Articles_by_Faculty_and_Departments** = Fakülte ve departmanlara göre article sayısı.
 
 ## Other Codes:
 

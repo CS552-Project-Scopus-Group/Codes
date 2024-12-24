@@ -53,6 +53,8 @@
 
 **matching_all_datas.py**= scopus ile üni yi match edip isim soy isim ve kaç adet makele olduğu bilgisini verir.
 
+**type_sütunu_ekleme_kodu.py** = univerisy_data'dan univerisry ismi ile scopus datasetindeki univerisryi name ile  match edip university_datadn type bilgisin alıp başka bir excele Type sütunu ekleyip yazan kod.
+
 
 
 

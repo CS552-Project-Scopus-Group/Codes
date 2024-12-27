@@ -1,0 +1,75 @@
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+from collections import Counter
+
+# Dosya yolları
+file1 = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\final_scopus_with_genders_1854_2015.xlsx'
+file2 = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\final_scopus_with_genders_2016_2024.xlsx'
+
+# Excel dosyalarını oku
+df1 = pd.read_excel(file1)
+df2 = pd.read_excel(file2)
+
+# Verileri birleştir
+df = pd.concat([df1, df2], ignore_index=True)
+
+# Unknown türlerini filtrele
+df = df[df['Gender Predictions'] != 'Unknown']
+
+# Şehir, Yıl ve Cinsiyet dağılımı analizi
+data = []
+
+for _, row in df.iterrows():
+    year = row['Year']
+    cities = str(row['City']).split(';')
+    genders = str(row['Gender Predictions']).split(';')
+    for city in cities:
+        if city.strip():
+            for gender in genders:
+                if gender.strip() and gender in ['Male', 'Female']:
+                    data.append((year, city.strip(), gender.strip()))  # Şehir, Yıl, Cinsiyet
+
+# City, Year ve Gender kombinasyonlarının sayısını hesapla
+city_year_gender_counts = Counter(data)
+
+# DataFrame oluştur
+analysis_df = pd.DataFrame(
+    [(year, city, gender) for (year, city, gender), count in city_year_gender_counts.items()],
+    columns=['Year', 'City', 'Gender']
+)
+
+# Şehir, cinsiyet ve üretkenliği hesapla (makale sayısı)
+city_gender_productivity = analysis_df.groupby(['City', 'Gender']).size().reset_index(name='Number of Articles')
+
+# Sonuçları kaydetmek için output klasörünü oluştur
+output_dir = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\results\city_gender_analysis'
+
+# Klasör var mı kontrol et, yoksa oluştur
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Excel dosyasını kaydetme
+excel_output_path = os.path.join(output_dir, 'city_gender_productivity_analysis.xlsx')
+with pd.ExcelWriter(excel_output_path) as writer:
+    city_gender_productivity.to_excel(writer, index=False, sheet_name='City_Gender_Productivity')
+
+# Grafikleri oluştur ve kaydet
+for city in city_gender_productivity['City'].unique():
+    city_data = city_gender_productivity[city_gender_productivity['City'] == city]
+   
+    plt.figure(figsize=(10, 6))
+    plt.bar(city_data['Gender'], city_data['Number of Articles'], color=['skyblue' if gender == 'Male' else '#FC0FC0' for gender in city_data['Gender']])
+    plt.title(f'{city} Şehrindeki Cinsiyetlere Göre Akademik Üretkenlik', fontsize=14)
+    plt.xlabel('Cinsiyet', fontsize=12)
+    plt.ylabel('Makale Sayısı', fontsize=12)
+    plt.tight_layout()
+
+    # Grafiği kaydetme
+    output_path = os.path.join(output_dir, f'city_gender_productivity_{city}.png')
+    plt.savefig(output_path)
+    plt.close()
+
+    print(f"{city} şehri için akademik üretkenlik grafiği başarıyla kaydedildi: {output_path}")
+
+print(f"Excel dosyası başarıyla kaydedildi: {excel_output_path}")

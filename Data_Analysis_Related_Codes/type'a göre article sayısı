@@ -1,0 +1,85 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+
+# Dosya yolları
+file1 = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\final_scopus_with_genders_1854_2015.xlsx'
+file2 = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\final_scopus_with_genders_2016_2024.xlsx'
+
+# Verileri yükle
+df1 = pd.read_excel(file1)
+df2 = pd.read_excel(file2)
+
+# Dosyaları birleştir
+df = pd.concat([df1, df2], ignore_index=True)
+
+# 'Type' sütununu kullanarak filtreleme yapalım
+df = df[~df['Type'].isin(['State', 'Private'])]  # State ve Private olanları filtrele
+df = df[~df['Type'].str.contains('Unknown', na=False)]  # "Unknown" içerenleri filtrele
+
+# Yıl bazında ve her bir 'Type' için makale sayısını hesapla
+df['Type'] = df['Type'].fillna('')  # NaN değerlerini boş string ile doldur
+df['Type'] = df['Type'].apply(lambda x: x.split(';') if x else [])  # 'Type' sütunundaki verileri ayır
+
+# Her bir 'Type' için ayrı satırlar oluştur
+expanded_df = df.explode('Type')
+
+# Her 'Type' ve yıl için makale sayısını hesapla
+type_year_count = expanded_df.groupby(['Year', 'Type']).size().reset_index(name='Article Count')
+
+# Grafik klasörünü oluştur
+output_folder = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\results'
+os.makedirs(output_folder, exist_ok=True)
+
+# Excel dosyası için çıktı yolu
+excel_output_path = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\results\type_article_counts.xlsx'
+
+# Yılları al
+years = type_year_count['Year'].unique()
+
+# Excel'e kaydetme işlemi
+with pd.ExcelWriter(excel_output_path) as writer:
+    # Her yıl için veriyi bir sayfada kaydet
+    for year in years:
+        # Yıl bazında veriyi filtrele
+        df_year = type_year_count[type_year_count['Year'] == year]
+        
+        # Veriyi Excel dosyasına yaz
+        df_year.to_excel(writer, sheet_name=str(year), index=False)
+
+# 'Type' bazında makale sayısını görselleştirme
+for year in years:
+    # Yıl bazında veriyi filtrele
+    df_year = type_year_count[type_year_count['Year'] == year]
+    
+    # 'Type'ları 30'luk gruplara ayır
+    num_types = len(df_year)
+    groups = [df_year[i:i + 30] for i in range(0, num_types, 30)]
+
+    # Alt grafik boyutunu hesaplama
+    num_groups = len(groups)
+    cols = 2  # Her satırda 2 grafik
+    rows = (num_groups // cols) + (1 if num_groups % cols else 0)
+    
+    # Tüm grupları tek bir PNG'ye koy
+    fig, axes = plt.subplots(rows, cols, figsize=(cols * 8, rows * 6))
+    axes = axes.flatten()
+
+    for idx, group in enumerate(groups):
+        ax = axes[idx]
+        sns.barplot(data=group, x='Type', y='Article Count', color='skyblue', ax=ax)
+        ax.set_title(f'Year {year} - Group {idx + 1}')
+        ax.set_xticklabels(group['Type'], rotation=45, ha='right', fontsize=8)
+        ax.set_ylabel('Number of Articles')
+        ax.set_xlabel('Type')
+
+    # Boş eksenleri kaldır
+    for idx in range(len(groups), len(axes)):
+        fig.delaxes(axes[idx])
+
+    # Grafiği kaydet
+    year_output_path = os.path.join(output_folder, f'{year}_type_article_counts.png')
+    plt.tight_layout()
+    plt.savefig(year_output_path)
+    plt.close()

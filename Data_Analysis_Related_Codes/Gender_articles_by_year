@@ -1,0 +1,35 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Excel dosyasını oku
+input_path = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\gender_article_counts.xlsx'
+df = pd.read_excel(input_path)
+
+# Yıllara göre gruplama
+years = df['Year'].unique()
+output_folder = r'C:\Users\emre.ozturk\Desktop\Yeni_Analiz_scrap\results'
+
+# Her yıl grubunu ayrı bir grafik olarak kaydet
+for start_year in range(int(min(years)), 2024 + 1, 10):
+    end_year = min(start_year + 9, 2024)
+    subset = df[(df['Year'] >= start_year) & (df['Year'] <= end_year)]
+    grouped = subset.groupby(['Year', 'Gender'])['Number of Articles'].sum().unstack()
+
+    # Grafik çizimi
+    plt.figure(figsize=(12, 6))
+    grouped.plot(kind='bar', color={'Male': 'skyblue', 'Female': '#FC0FC0'}, width=0.8)
+
+    # Grafik özellikleri
+    plt.title(f'Makale Sayıları: {start_year}-{end_year} Yılları Arası', fontsize=16)
+    plt.xlabel('Yıllar', fontsize=12)
+    plt.ylabel('Makale Sayısı', fontsize=12)
+    plt.legend(title='Cinsiyet', fontsize=10)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    # Grafiği kaydetme
+    output_path = f"{output_folder}\gender_articles_{start_year}_{end_year}.png"
+    plt.savefig(output_path)
+    plt.close()
+
+    print(f"Grafik başarıyla kaydedildi: {output_path}")
